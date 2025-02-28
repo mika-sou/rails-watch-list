@@ -1,0 +1,29 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.gqmagazine.fr/photos/603e6a8da9360b0585bcbc6a/16:9/w_2240,c_limit/108387402);">
+  <div class="container">
+    <h1><strong>Save any kind of movies!</strong></h1>
+    <p>Create your own watchlist</p>
+  </div>
+</div>
+
+
+<div class="container-fluid">
+  <div class="row">
+      <h2 class="mt-3">My list</h2>
+    <div class="d-flex col-8">
+  <% @lists.each do |list| %>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
+    <div class="card custom-bg-card">
+        <div class="card-body d-flex justify-content-center align-items-center">
+        <%= link_to list.name, list_path(list), class: "text-decoration-none text-light font-weight-bold" %>
+      </div>
+      </div>
+    </div>
+  <% end %>
+    </div>
+
+
+    <div class="col-4">
+      <%= link_to "Create a list", new_list_path, class: "btn btn-success text-light"%>
+    </div>
+  </div>
+</div>
