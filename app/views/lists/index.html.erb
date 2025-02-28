@@ -1,4 +1,4 @@
-<div class="banner" style='background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("<%= cl_image_path('uyhpwpyclblshzkonkvc') %>")'>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path('uyhpwpyclblshzkonkvc')%>')">
   <div class="container">
     <h1><strong>Save any kind of movies!</strong></h1>
     <p>Create your own watchlist</p>
@@ -12,11 +12,19 @@
     <div class="d-flex col-8">
   <% @lists.each do |list| %>
     <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
-    <div class="card custom-bg-card">
+    <% if list.photo.attached? %>
+      <div class="card custom-bg-card" style='background-image: url("<%= cl_image_path(list.photo.key, height: 300, crop: :fill) %>")'>
         <div class="card-body d-flex justify-content-center align-items-center">
-        <%= link_to list.name, list_path(list), class: "text-decoration-none text-light font-weight-bold" %>
+          <%= link_to list.name, list_path(list), class: "text-decoration-none text-light font-weight-bold" %>
+        </div>
       </div>
-      </div>
+      <% else %>
+        <div class="card custom-bg-card">
+          <div class="card-body d-flex justify-content-center align-items-center">
+            <%= link_to list.name, list_path(list), class: "text-decoration-none text-light font-weight-bold" %>
+          </div>
+        </div>
+      <% end %>
     </div>
   <% end %>
     </div>

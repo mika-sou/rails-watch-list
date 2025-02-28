@@ -1,8 +1,11 @@
+<div class="container">
 <h1>Create a new list</h1>
 
 <%= simple_form_for(@list) do |f| %>
   <%= f.input :name %>
+  <%= f.input :photo %>
   <%= f.submit %>
 <% end %>
 
-<%= link_to "Back", root_path %>
+<%= link_to "Back", root_path, class: 'mt-3 btn btn-success' %>
+</div>
